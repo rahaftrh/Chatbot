@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speech Recognition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 >تحويل الكلام إلى نص</h2>
+    <textarea rows="10" cols="50" id="text-box"  > </textarea>
+    <br>
+    <button id="btn-start">إبدأ</button>
+    <button  id="btn-end" >إنهاء</button>
+    <button onclick="Connect()">إتصال</button>
+    <p id="instructions" >اضغط  وابدأ  الحديث</p>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
+<script src="arduino.js"></script>
+<script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "34663d1d-418c-483b-9d44-c5e7c65c607a", // The ID of this integration.
+      region: "au-syd", // The region your integration is hosted in.
+      serviceInstanceID: "006875f9-57f0-4f99-b146-46caa2650bff", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</html>
